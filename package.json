@@ -1,0 +1,23 @@
+{
+  "name": "two-states-restaurant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "gsap": "^3.12.5",
+    "@gsap/react": "^2.1.0",
+    "lenis": "^1.1.14",
+    "split-type": "^0.3.4"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}
