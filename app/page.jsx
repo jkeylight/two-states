@@ -218,15 +218,11 @@ export default function HomePage() {
               <div className="hero__bg-overlay" />
             </div>
             <div className="hero__circle">
-              <div className="hero__circle-inner">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ marginBottom: 16, opacity: 0.4 }}>
-                  <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                  <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                  <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                </svg>
-                <span className="hero__circle-label">Place Your Hero Image Here</span>
-                <span style={{ fontSize: 10, letterSpacing: "0.15em", color: "rgba(245,239,224,0.2)", marginTop: 6, textTransform: "uppercase" }}>1200 × 1400 px · portrait</span>
-              </div>
+              <img
+                src="/images/hero.jpg"
+                alt="Two States Restaurant"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+              />
             </div>
             <div className="hero__content">
               <p className="hero__eyebrow">Kerala × Tamil Nadu</p>
