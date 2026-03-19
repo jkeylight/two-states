@@ -297,15 +297,7 @@ export default function HomePage() {
                   <button className="about__cta" onClick={() => setModalOpen(true)}>Reserve a Table →</button>
                 </div>
                 <div className="about__img-wrap">
-                  <div className="about__img-placeholder">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.35, marginBottom: 14 }}>
-                      <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                      <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                      <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                    </svg>
-                    <span style={{ fontSize: 11, letterSpacing: "0.2em", color: "rgba(201,168,76,0.6)", textTransform: "uppercase", display: "block" }}>Dish Photography</span>
-                    <span style={{ fontSize: 10, letterSpacing: "0.1em", color: "rgba(245,239,224,0.2)", marginTop: 8, display: "block" }}>800 × 1000 px · portrait</span>
-                  </div>
+                  <img src="/images/about-dish.jpg" alt="Signature dish at Two States" className="about__img" />
                   <div className="about__img-tag">
                     <span className="about__img-tag-num">★ 4.9</span>
                     <span className="about__img-tag-label">Guest Rating</span>
@@ -343,17 +335,11 @@ export default function HomePage() {
               </div>
               <div className="menu__grid">
                 <div className="menu__img-wrap">
-                  <div className="menu__img-placeholder">
-                    <svg width="44" height="44" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.35, marginBottom: 14 }}>
-                      <circle cx="24" cy="24" r="20" stroke="#c9a84c" strokeWidth="0.8"/>
-                      <path d="M16 24 C16 19 20 15 24 15 C28 15 32 19 32 24" stroke="#c9a84c" strokeWidth="0.8" strokeLinecap="round"/>
-                      <circle cx="24" cy="28" r="6" stroke="#c9a84c" strokeWidth="0.8"/>
-                    </svg>
-                    <span style={{ fontSize: 11, letterSpacing: "0.2em", color: "rgba(201,168,76,0.6)", textTransform: "uppercase", display: "block" }}>
-                      {activeMenuTab === "kerala" ? "Kerala Kitchen" : "Tamil Nadu Kitchen"}
-                    </span>
-                    <span style={{ fontSize: 10, letterSpacing: "0.1em", color: "rgba(245,239,224,0.2)", marginTop: 8, display: "block" }}>800 × 900 px recommended</span>
-                  </div>
+                  <img
+                    src={activeMenuTab === "kerala" ? "/images/menu-kerala.jpg" : "/images/menu-tamilnadu.jpg"}
+                    alt={activeMenuTab === "kerala" ? "Kerala Kitchen" : "Tamil Nadu Kitchen"}
+                    className="menu__img"
+                  />
                 </div>
                 <div className="menu__list-wrap">
                   <p className="menu__list-title">{activeMenuTab === "kerala" ? "Kerala Signatures" : "Tamil Nadu Signatures"}</p>
@@ -385,14 +371,7 @@ export default function HomePage() {
               <div className="chefs__track" ref={chefsTrackRef}>
                 {CHEFS.map((chef, i) => (
                   <div className="chef-card" key={chef.name}>
-                    <div className="chef-card__img-placeholder">
-                      <svg width="40" height="40" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 12 }}>
-                        <circle cx="24" cy="18" r="10" stroke="#c9a84c" strokeWidth="0.8"/>
-                        <path d="M8 42 C8 34 15 28 24 28 C33 28 40 34 40 42" stroke="#c9a84c" strokeWidth="0.8" strokeLinecap="round"/>
-                      </svg>
-                      <span style={{ fontSize: 10, letterSpacing: "0.2em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Chef Portrait</span>
-                      <span style={{ fontSize: 9, color: "rgba(245,239,224,0.2)", marginTop: 6, display: "block", letterSpacing: "0.1em" }}>600 × 700 px</span>
-                    </div>
+                    <img src={`/images/chef-${i + 1}.jpg`} alt={chef.name} style={{ width: "100%", height: "320px", objectFit: "cover", objectPosition: "top" }} />
                     <div className="chef-card__body">
                       <span className="chef-card__num">0{i + 1}</span>
                       <h3 className="chef-card__name">{chef.name}</h3>
@@ -418,51 +397,11 @@ export default function HomePage() {
                 <p className="experience__sub">An atmosphere born of tradition</p>
               </div>
               <div className="experience__gallery">
-                <div className="experience__cell experience__cell--tall"><div className="experience__placeholder">
-                  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 10 }}>
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Dining Room</span>
-                  <span style={{ fontSize: 9, color: "rgba(245,239,224,0.18)", marginTop: 6, display: "block" }}>1200 × 1800 px</span>
-                </div></div>
-                <div className="experience__cell experience__cell--wide"><div className="experience__placeholder">
-                  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 10 }}>
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Private Events</span>
-                  <span style={{ fontSize: 9, color: "rgba(245,239,224,0.18)", marginTop: 6, display: "block" }}>1600 × 900 px</span>
-                </div></div>
-                <div className="experience__cell experience__cell--normal"><div className="experience__placeholder">
-                  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 10 }}>
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Table Detail</span>
-                  <span style={{ fontSize: 9, color: "rgba(245,239,224,0.18)", marginTop: 6, display: "block" }}>900 × 900 px</span>
-                </div></div>
-                <div className="experience__cell experience__cell--normal"><div className="experience__placeholder">
-                  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 10 }}>
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Wine & Spirits</span>
-                  <span style={{ fontSize: 9, color: "rgba(245,239,224,0.18)", marginTop: 6, display: "block" }}>900 × 900 px</span>
-                </div></div>
-                <div className="experience__cell experience__cell--normal"><div className="experience__placeholder">
-                  <svg width="36" height="36" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.3, marginBottom: 10 }}>
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                    <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, letterSpacing: "0.18em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase", display: "block" }}>Open Kitchen</span>
-                  <span style={{ fontSize: 9, color: "rgba(245,239,224,0.18)", marginTop: 6, display: "block" }}>900 × 900 px</span>
-                </div></div>
+                <div className="experience__cell experience__cell--tall"><img src="/images/exp-ambience.jpg" alt="Dining Room" className="experience__img" /></div>
+                <div className="experience__cell experience__cell--wide"><img src="/images/exp-events.jpg" alt="Private Events" className="experience__img" /></div>
+                <div className="experience__cell experience__cell--normal"><img src="/images/exp-detail.jpg" alt="Table Detail" className="experience__img" /></div>
+                <div className="experience__cell experience__cell--normal"><img src="/images/exp-wine.jpg" alt="Wine & Spirits" className="experience__img" /></div>
+                <div className="experience__cell experience__cell--normal"><img src="/images/exp-kitchen.jpg" alt="Open Kitchen" className="experience__img" /></div>
               </div>
             </div>
           </section>
@@ -555,14 +494,11 @@ export default function HomePage() {
             <div className="connect__gallery">
               {["Appam", "Rasam", "Chettinad", "Avial", "Payasam"].map((label) => (
                 <div className="connect__cell" key={label}>
-                  <div className="connect__cell-placeholder">
-                    <svg width="28" height="28" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.25, marginBottom: 8 }}>
-                      <rect x="4" y="10" width="40" height="30" rx="3" stroke="#c9a84c" strokeWidth="0.8"/>
-                      <circle cx="16" cy="22" r="5" stroke="#c9a84c" strokeWidth="0.8"/>
-                      <path d="M4 34 L14 24 L22 32 L30 22 L44 34" stroke="#c9a84c" strokeWidth="0.8" strokeLinejoin="round"/>
-                    </svg>
-                    <span style={{ fontSize: 9, letterSpacing: "0.2em", color: "rgba(201,168,76,0.5)", textTransform: "uppercase" }}>{label}</span>
-                  </div>
+                  <img
+                    src={`/images/insta-${["Appam","Rasam","Chettinad","Avial","Payasam"].indexOf(label)+1}.jpg`}
+                    alt={label}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
                 </div>
               ))}
             </div>
