@@ -77,20 +77,65 @@ export default function HomePage() {
 
   /* HERO */
   useGSAP(() => {
-    const title = new SplitType(".hero__title", { types: "chars" });
-    const tl = gsap.timeline({ delay: 0.1 });
-    tl.from(title.chars,      { y: 100, opacity: 0, rotateX: -30, stagger: 0.025, duration: 1.1, ease: "power4.out" })
-      .from(".hero__eyebrow", { y: 16, opacity: 0, duration: 0.6, ease: "power3.out" }, 0)
-      .from(".hero__sub",     { y: 16, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.45")
-      .from(".hero__cta-wrap",{ y: 16, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.35")
-      .from(".hero__circle",  { scale: 0.9, opacity: 0, duration: 1.5, ease: "power3.out" }, 0.05)
-      .from(".hero__meta",    { y: 16, opacity: 0, duration: 0.5 }, "-=0.5")
-      .from(".hero__meta-right",   { y: 16, opacity: 0, duration: 0.5 }, "<")
-      .from(".hero__scroll-hint",  { opacity: 0, duration: 0.5 }, "-=0.2");
+    // split title into chars
+    const title = new SplitType(".hero__title", { types: "chars, words" });
+    const tl = gsap.timeline({ delay: 0.3 });
 
-    gsap.to(".hero__bg-gradient", { scale: 1.06, duration: 14, ease: "none", repeat: -1, yoyo: true });
-    gsap.to(".hero__circle", { y: 140, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1.5 } });
-    gsap.to(".hero__content", { y: 80, opacity: 0, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "60% top", scrub: 1 } });
+    // bg image ken burns
+    gsap.fromTo(".hero__bg-img",
+      { scale: 1.12 },
+      { scale: 1, duration: 2.2, ease: "power2.out" }
+    );
+
+    // overlay fade in
+    gsap.fromTo(".hero__bg-overlay",
+      { opacity: 0 },
+      { opacity: 1, duration: 1.8, ease: "power2.out" }
+    );
+
+    // eyebrow lines expand
+    tl.from(".hero__eyebrow-line", { scaleX: 0, duration: 0.8, ease: "power3.out", stagger: 0.1 }, 0.4)
+      .from(".hero__eyebrow", { opacity: 0, y: 8, duration: 0.6, ease: "power3.out" }, 0.5)
+
+    // title chars drop in with 3D rotate
+    tl.from(title.chars, {
+        y: 120,
+        opacity: 0,
+        rotateX: -60,
+        transformOrigin: "0% 50% -80px",
+        stagger: { each: 0.028, from: "left" },
+        duration: 1.2,
+        ease: "power4.out",
+      }, 0.6)
+
+    // subtitle word by word
+      .from(".hero__sub", {
+        opacity: 0,
+        y: 30,
+        duration: 0.9,
+        ease: "power3.out",
+      }, "-=0.5")
+
+    // CTAs slide up
+      .from(".hero__cta-wrap", { y: 24, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.5")
+
+    // meta fade in from sides
+      .from(".hero__meta",       { x: -30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .from(".hero__meta-right", { x:  30, opacity: 0, duration: 0.8, ease: "power3.out" }, "<")
+      .from(".hero__scroll-hint",{ opacity: 0, y: 10, duration: 0.6, ease: "power3.out" }, "-=0.3");
+
+    // parallax bg on scroll
+    gsap.to(".hero__bg-img", {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 1 },
+    });
+
+    // content fade out on scroll
+    gsap.to(".hero__content", {
+      y: 60, opacity: 0, ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "55% top", scrub: 1 },
+    });
   }, { scope: heroRef, dependencies: [loaded] });
 
   /* PINNED statement */
@@ -213,37 +258,42 @@ export default function HomePage() {
 
           {/* HERO */}
           <section className="hero" ref={heroRef} id="home">
+            {/* Full bleed background image */}
             <div className="hero__bg">
-              <div className="hero__bg-gradient" />
+              <img src="/images/hero.jpg" alt="Two States Restaurant" className="hero__bg-img" />
               <div className="hero__bg-overlay" />
             </div>
-            <div className="hero__circle">
-              <img
-                src="/images/hero.jpg"
-                alt="Two States Restaurant"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
-              />
-            </div>
+
+            {/* Center content */}
             <div className="hero__content">
-              <p className="hero__eyebrow">Kerala × Tamil Nadu</p>
+              <div className="hero__eyebrow-wrap">
+                <span className="hero__eyebrow-line" />
+                <p className="hero__eyebrow">Kerala × Tamil Nadu</p>
+                <span className="hero__eyebrow-line" />
+              </div>
               <h1 className="hero__title">Two States</h1>
-              <p className="hero__sub">Where two great cuisines become one extraordinary table</p>
+              <p className="hero__sub">Where two great cuisines become<br />one extraordinary table</p>
               <div className="hero__cta-wrap">
                 <button className="hero__cta" onClick={() => setModalOpen(true)}>Reserve a Table <span>→</span></button>
                 <Link href="#menu" className="hero__cta hero__cta--ghost">Explore Menu</Link>
               </div>
             </div>
+
+            {/* Meta left */}
             <div className="hero__meta">
               <p className="hero__meta-item">Address</p>
               <p className="hero__meta-val">12, Boat Club Road, Pune 411 001</p>
               <p className="hero__meta-item" style={{ marginTop: 14 }}>Reservations</p>
               <p className="hero__meta-val">+91 20 2686 0000</p>
             </div>
+
+            {/* Meta right */}
             <div className="hero__meta-right">
               <p className="hero__meta-item">Opening Hours</p>
               <p className="hero__meta-val">Lunch &nbsp; Mon–Fri &nbsp; 12:00–15:00</p>
               <p className="hero__meta-val">Dinner &nbsp; Daily &nbsp;&nbsp;&nbsp;&nbsp; 19:00–23:00</p>
             </div>
+
             <div className="hero__scroll-hint"><div className="hero__scroll-line" /></div>
           </section>
 
