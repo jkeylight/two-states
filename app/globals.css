@@ -1603,3 +1603,71 @@ body::before {
   .hero__meta, .hero__meta-right { display: none; }
   .hero__title { font-size: clamp(60px, 18vw, 100px); }
 }
+
+/* ── FLOATING RESERVE BUTTON ───────────────────────────────── */
+.float-reserve {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s, gap 0.25s;
+}
+.float-reserve:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.45);
+  gap: 16px;
+}
+.float-reserve__icon {
+  font-size: 14px;
+  transition: transform 0.25s;
+}
+.float-reserve:hover .float-reserve__icon {
+  transform: translateX(3px);
+}
+
+/* pulse ring animation */
+.float-reserve::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,168,76,0.4);
+  animation: reservePulse 2.5s ease-in-out infinite;
+}
+@keyframes reservePulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%       { transform: scale(1.06); opacity: 0; }
+}
+
+/* ── FOOTER CREDITS ─────────────────────────────────────────── */
+.footer__copy {
+  font-size: 11px;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .float-reserve {
+    bottom: 24px;
+    right: 24px;
+    padding: 12px 20px;
+    font-size: 10px;
+  }
+}

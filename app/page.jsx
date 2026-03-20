@@ -282,7 +282,7 @@ export default function HomePage() {
             {/* Meta left */}
             <div className="hero__meta">
               <p className="hero__meta-item">Address</p>
-              <p className="hero__meta-val">12, Boat Club Road, Pune 411 001</p>
+              <p className="hero__meta-val">H.No 50/A, Anakkatty Bridge Road, Anaikatti, TN 641108</p>
               <p className="hero__meta-item" style={{ marginTop: 14 }}>Reservations</p>
               <p className="hero__meta-val">+91 20 2686 0000</p>
             </div>
@@ -508,7 +508,7 @@ export default function HomePage() {
                 <div className="info__block">
                   <span className="info__block-label">Visit Us</span>
                   <h3 className="info__block-title">Find Us</h3>
-                  <p className="info__block-text"><strong>12, Boat Club Road</strong>Pune, Maharashtra 411 001<br />Near Bund Garden, Pune</p>
+                  <p className="info__block-text"><strong>H.No 50/A, Anakkatty Bridge Road</strong>Near Govt. School, Anaikatti<br />Tamil Nadu — 641108<br />Attapadi / Coimbatore Border</p>
                 </div>
                 <div className="info__block">
                   <span className="info__block-label">Opening Hours</span>
@@ -584,7 +584,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="footer__bottom">
-                <p className="footer__copy">© 2025 Two States Restaurant. All rights reserved.</p>
+                <p className="footer__copy">© 2025 Two States Restaurant. All rights reserved by <span style={{color:"var(--color-gold)"}}>Empathy Studio</span> &nbsp;·&nbsp; Built with love by <span style={{color:"var(--color-gold)"}}>Norman James</span></p>
                 <div className="footer__legal">
                   <a href="#">Privacy Policy</a>
                   <a href="#">Terms of Use</a>
@@ -596,6 +596,15 @@ export default function HomePage() {
 
         </main>
       </div>
+      {/* FLOATING RESERVE BUTTON */}
+      <button
+        className="float-reserve"
+        onClick={() => setModalOpen(true)}
+        aria-label="Reserve a Table"
+      >
+        <span className="float-reserve__text">Reserve</span>
+        <span className="float-reserve__icon">→</span>
+      </button>
     </>
   );
 }

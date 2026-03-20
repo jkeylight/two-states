@@ -34,7 +34,7 @@ export default function ReservationModal({ isOpen, onClose }) {
         <div className="modal__header">
           <p className="modal__eyebrow">Reserve Your Evening</p>
           <h2 className="modal__title">Book a Table</h2>
-          <p className="modal__sub">We look forward to welcoming you</p>
+          <p className="modal__sub">We look forward to welcoming you<br /><span style={{fontSize:"11px", color:"rgba(201,168,76,0.6)", letterSpacing:"0.08em"}}>H.No 50/A, Anakkatty Bridge Road, Anaikatti, TN</span></p>
         </div>
 
         <form className="modal__form" onSubmit={(e) => e.preventDefault()}>
