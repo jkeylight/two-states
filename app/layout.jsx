@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import CustomCursor  from "@/components/CustomCursor";
 import Navbar        from "@/components/Navbar";
